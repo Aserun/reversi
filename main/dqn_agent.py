@@ -63,9 +63,10 @@ class DQNAgent:
 
         # saver
         self.saver = tf.train.Saver()
-
+        self.config = tf.ConfigProto()
+        self.config.gpu_options.allow_growth = True
         # session
-        self.sess = tf.Session()
+        self.sess = tf.Session(config=self.config)
         self.sess.run(tf.global_variables_initializer())
 
     def Q_values(self, state):
